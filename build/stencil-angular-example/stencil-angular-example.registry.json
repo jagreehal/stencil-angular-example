@@ -1,0 +1,13 @@
+{
+  "namespace": "StencilAngularExample",
+  "fsNamespace": "stencil-angular-example",
+  "loader": "../stencil-angular-example.js",
+  "global": "stencil-angular-example.global.js",
+  "core": "stencil-angular-example.7ks0dcop.js",
+  "corePolyfilled": "stencil-angular-example.bsiesefu.js",
+  "components": {
+    "profile-card": {
+      "$": "9num2l2g"
+    }
+  }
+}
