@@ -1,0 +1,1 @@
+// StencilAngularExample: CommonJS Main

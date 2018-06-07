@@ -1,0 +1,79 @@
+{
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.9.7"
+  },
+  "app": {
+    "namespace": "StencilAngularExample",
+    "fsNamespace": "stencil-angular-example",
+    "components": 1,
+    "entries": 1,
+    "bundles": 3
+  },
+  "options": {
+    "minifyJs": true,
+    "minifyCss": true,
+    "hashFileNames": true,
+    "hashedFileNameLength": 8,
+    "buildEs5": true
+  },
+  "components": [
+    {
+      "tag": "profile-card",
+      "dependencies": [],
+      "dependencyOf": []
+    }
+  ],
+  "entries": [
+    {
+      "entryId": "entry:profile-card",
+      "components": [
+        {
+          "tag": "profile-card",
+          "dependencies": [],
+          "dependencyOf": []
+        }
+      ],
+      "bundles": [
+        {
+          "fileName": "9num2l2g.js",
+          "outputs": [
+            "dist/stencil-angular-example/9num2l2g.js",
+            "www/build/stencil-angular-example/9num2l2g.js"
+          ],
+          "size": 1029,
+          "gzip": 593
+        },
+        {
+          "fileName": "9num2l2g.es5.js",
+          "outputs": [
+            "dist/stencil-angular-example/9num2l2g.es5.js",
+            "www/build/stencil-angular-example/9num2l2g.es5.js"
+          ],
+          "size": 1365,
+          "gzip": 687,
+          "target": "es5"
+        },
+        {
+          "fileName": "9num2l2g.js",
+          "outputs": [
+            "dist/esm/es5/9num2l2g.js"
+          ],
+          "size": 1276,
+          "gzip": 649,
+          "target": "es5"
+        }
+      ],
+      "inputs": [
+        "dist/collection/components/profile-card/profile-card.js"
+      ],
+      "encapsulations": [
+        "none"
+      ]
+    }
+  ],
+  "sourceGraph": {
+    "src/components/profile-card/profile-card.tsx": []
+  },
+  "collections": []
+}

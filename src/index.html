@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Stencil Angular Example</title>
+  <meta name="Description" content="Stencil Angular Example">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="theme-color" content="#16161d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+
+  <script src="build/stencil-angular-example.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+  <link rel="apple-touch-icon" href="/assets/icon/icon.png">
+  <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+
+</head>
+
+<body>
+  <app>
+
+  </app>
+  <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+  <script src="https://unpkg.com/zone.js"></script>
+  <script src="https://unpkg.com/reflect-metadata"></script>
+  <script src="https://unpkg.com/rxjs@5.2.0/bundles/Rx.js"></script>
+  <script src="https://unpkg.com/@angular/core@5"></script>
+  <script src="https://unpkg.com/@angular/common@5"></script>
+  <script src="https://unpkg.com/@angular/compiler@5"></script>
+  <script src="https://unpkg.com/@angular/platform-browser@5"></script>
+  <script src="https://unpkg.com/@angular/platform-browser-dynamic@5"></script>
+  <script>
+    class AppComponent {
+      static get annotations() {
+        return [
+          new ng.core.Component({
+            selector: 'app',
+            template: `<div>
+        <form class="measure center">
+          <div class="mt3">
+            <label class="db fw6 lh-copy f6" for="image">Image Url</label>
+            <input 
+              class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" 
+              type="url" 
+              name="imageUrl"
+              [value]="imageUrl"
+              (input)="imageUrl = $event.target.value" />
+          </div>
+          <div class="mt3">
+            <label class="db fw6 lh-copy f6" for="name">Name</label>
+            <input 
+              class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" 
+              type="name" 
+              [value]="name"
+              (input)="name = $event.target.value" />
+          </div>
+          <div class="mt3">
+            <label class="db fw6 lh-copy f6" for="text">Text</label>
+            <textarea 
+            id="text" 
+            name="text" 
+            [value]="text"
+            (input)="text = $event.target.value"
+            class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"></textarea>
+          </div>
+        </form>
+        <profile-card image="{{imageUrl}}" name="{{name}}" ref="profileCard">
+          {{text}}
+        </profile-card>      
+        <hr/>
+        <article class="pa3 pa5-ns">
+          <h1 class="f4 bold center mw6">Messages</h1>
+          <ul class="list pl0 ml0 center mw6 ba b--light-silver br2">
+            <li class="ph3 pv3 bb b--light-silver" *ngFor="let message of messages">
+                {{ message.name }} says {{message.text}}
+            </li>          
+          </ul>
+        </article>
+      </div>`
+          })
+        ];
+      }
+
+      ngOnInit() {
+        this.imageUrl = 'https://placekitten.com/g/200/300';
+        this.name = 'Kitty';
+        this.text = 'Meow';
+        this.messages = []
+      }
+      handleMessageSent({
+        detail
+      }) {
+        this.messages.push(detail);
+      }
+      ngAfterViewInit() {
+        document.querySelector('profile-card')
+          .addEventListener('messageSent', this.handleMessageSent.bind(this));
+      }
+    }
+
+    class AppModule {
+      static get annotations() {
+        return [
+          new ng.core.NgModule({
+            declarations: [AppComponent],
+            imports: [ng.platformBrowser.BrowserModule],
+            providers: [],
+            bootstrap: [AppComponent],
+            schemas: [ng.core.CUSTOM_ELEMENTS_SCHEMA]
+          })
+        ]
+      }
+      constructor() {}
+    }
+
+    ng.core.enableProdMode()
+    ng.platformBrowserDynamic
+      .platformBrowserDynamic()
+      .bootstrapModule(AppModule);
+  </script>
+</body>
+
+</html>
